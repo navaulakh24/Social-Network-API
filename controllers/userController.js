@@ -63,8 +63,6 @@ module.exports = {
     // POST - add a new friend to a user's friend list
     async addFriend(req, res) {
         try{
-            console.log(req.params.userId)
-            console.log(req.params.friendId)
             const user = await User.findOne({ _id: req.params.userId });
             const friend = await User.findOne({ _id: req.params.friendId });
             if (!user || !friend) {

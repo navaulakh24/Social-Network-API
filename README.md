@@ -5,7 +5,10 @@ This is an API I created for a social network web application where users can sh
 #
 
 ## Table of Contents
-
+* [Demo](#demo)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Questions](#questions)
 
 ## User Story
 
@@ -28,6 +31,9 @@ THEN I am able to successfully create, update, and delete users and thoughts in 
 WHEN I test API POST and DELETE routes in Insomnia
 THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 ```
+
+## Demo
+- Click [here](https://drive.google.com/file/d/1yxDgOI8n5hCE4Wnp1w3ICG7I9VmUE7sS/view) for the demo video
 
 ## Installation
 - Download or clone this repository to use thi application on your local machine.
