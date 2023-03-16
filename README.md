@@ -35,6 +35,30 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ## Demo
 - Click [here](https://drive.google.com/file/d/1yxDgOI8n5hCE4Wnp1w3ICG7I9VmUE7sS/view) for the demo video
 
+On Insomnia, the following API routes have been created and used to add, update, or remove users, friends, thoughts and reactions in the user's database.
+
+**USER**
+- GET all users: Get all users: `GET /api/users`
+- Create a new user: `POST /api/users`
+- Update a user by its `id`: `PUT /api/users/:userId`
+- Delete a user by its `id`: `DELETE /api/user/:userId`
+
+**THOUGHT** 
+- Get all thoughts: `GET /api/thoughts/`
+- Create a new thought: `POST /api/thoughts/`
+- Update a thought by its `id`: `PUT /api/thoughts/:thoughtId`
+- Delete a thought by its `id`: `DELETE /api/thoughts/:thoughtId`
+
+**FRIEND**
+- Add a new friend to a user's friend list: `POST /api/users/:userid/friends/:friendId`
+- Delete a friend from a user's friend list: `DELETE /api/users/:userid/friends/:friendId`
+
+**REACTION**
+
+- Create a reaction: `POST /api/thoughts/:thoughtId/reactions`
+- Delete a reaction by the `reactionId`: `DEL /api/thoughts/:thoughtId/reactions/:reactionId`
+
+
 ## Installation
 - Download or clone this repository to use thi application on your local machine.
 - Requires Node.js and MongoDB to run application
