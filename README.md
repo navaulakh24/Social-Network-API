@@ -33,8 +33,17 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 - Download or clone this repository to use thi application on your local machine.
 - Requires Node.js and MongoDB to run application
 - To install the dependencies needed, run the command 'npm i' in the command line from the root directory.
+#
 
 ## Usage
 - To invoke the application, run 'npm start' in command line.
 - Mongoose models will now be synced to the MongoDB database.
-- 
+- Open MongoDB and connect to the URI. Click on the database to see thoughts and users data.
+- You can create seed data and test the API routes in Insomnia.
+#
+## Questions
+GitHub: navaulakh24
+
+GitHub Repo: https://github.com/navaulakh24/Social-Network-API
+
+Email: navdeep_aulakh24@hotmail.com

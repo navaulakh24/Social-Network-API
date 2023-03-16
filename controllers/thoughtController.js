@@ -14,7 +14,8 @@ module.exports = {
     // get one thought by id
     async getThoughtById(req, res) {
         try {
-            const thought = await Thought.findById(req.params.thoughtId);
+            console.log(req.params.thoughtId)
+            const thought = await Thought.findOne(req.params.thoughtId);
             res.json(thought);
         } catch (err) {
             res.status(500).json(err);
@@ -25,9 +26,10 @@ module.exports = {
     async createThought(req, res) {
         try {
             const thought = await Thought.create(req.body);
-            await User.findByIdAndUpdate(req.body.userId, { $push: { thoughts: thought._id } });
+            await User.findByIdAndUpdate(req.params.userId, { $push: { thoughts: thought._id } });
             res.json(thought);
         } catch (err) {
+            console.log(err);
             res.status(500).json(err);
         }
     },
@@ -35,7 +37,7 @@ module.exports = {
     // PUT -update thought by id
     async updateThought(req, res) {
         try {
-            const updateThought = await Thought.findByIdAndUpdate(req.params.thoughtId, req.body, { new: true });
+            const updateThought = await Thought.findOneAndUpdate(req.params.thoughtId, req.body, { new: true });
             res.json(updateThought);
         } catch (err) {
             res.status(500).json(err);
@@ -45,8 +47,8 @@ module.exports = {
     // DELETE thought by id
     async deleteThought(req, res) {
         try {
-            const thought = await Thought.findByIdAndDelete(req.params.thoughtId);
-            await User.findByIdAndUpdate(thought.userId, { $pull: { thoughts: thought._id } });
+            const thought = await Thought.deleteOne(req.params.thoughtId);
+            await User.findOneAndUpdate(thought.userId, { $pull: { thoughts: thought._id } });
             res.json(thought);
         } catch (err) {
             res.status(500).json(err);

@@ -18,8 +18,9 @@ module.exports = {
     // get one user by id
     async getUserById(req, res) {
         try {
+            console.log(req.params.userId)
             const user = await User
-                .findById(req.params.userId)
+                .findOne({_id:req.params.userId})
                 .populate('thoughts')
                 .populate('friends');
             res.json(user);
@@ -41,7 +42,7 @@ module.exports = {
     // PUT - update user by id
     async updateUser(req, res) {
         try {
-            const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+            const user = await User.findByIdAndUpdate(req.params.userId, req.body, { new: true });
             res.json(user);
         } catch (err) {
             res.status(500).json(err);
@@ -51,7 +52,7 @@ module.exports = {
     // DELETE - delete user and thought by id
     async deleteUser(req, res) {
         try {
-            const user = await User.findByIdAndDelete(req.params.id);
+            const user = await User.findByIdAndDelete(req.params.userId);
             await Thought.deleteMany({ username: user.username });
             res.json(user);
         } catch (err) {
@@ -62,6 +63,8 @@ module.exports = {
     // POST - add a new friend to a user's friend list
     async addFriend(req, res) {
         try{
+            console.log(req.params.userId)
+            console.log(req.params.friendId)
             const user = await User.findOne({ _id: req.params.userId });
             const friend = await User.findOne({ _id: req.params.friendId });
             if (!user || !friend) {
